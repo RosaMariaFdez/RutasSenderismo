@@ -1,0 +1,49 @@
+﻿<Window x:Class="RutasSenderismo.IniSesion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RutasSenderismo"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Inicio de Sesion" Height="470" Width="720" Icon="/stacklands explorer card.png" ResizeMode="NoResize">
+    <Grid>
+
+        <WrapPanel Margin="115,111,115,35">
+            <Rectangle x:Name="RectanguloLogin" Height="278" Stroke="#FF424242" Width="470" RadiusX="12.558" RadiusY="12.558" Fill="#FF424242"/>
+
+        </WrapPanel>
+        <TextBlock x:Name="NombreEmpresa" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Senderify" VerticalAlignment="Top" Height="85" Width="300" Foreground="#FF51B64A" FontFamily="Cooper Black" FontSize="60" FontStretch="SemiCondensed" FontWeight="Light"/>
+        <Grid Margin="150,111,150,66">
+
+            <TextBlock x:Name="lblTituloLogin" Margin="20,15,210,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="35" Foreground="White" FontFamily="Cooper Black" FontSize="30" FontStretch="SemiCondensed" FontWeight="Light" Text="{DynamicResource lblTituloLogin}"/>
+            <Label x:Name="lblUsuario" Content="{DynamicResource lblUsuario}" HorizontalAlignment="Left" Margin="20,71,0,0" Foreground="White" VerticalAlignment="Top" Height="26" Width="54" />
+            <Label x:Name="lblContrasena" Content="{DynamicResource lblContrasena}" HorizontalAlignment="Left" Margin="20,128,0,0" Foreground="White" VerticalAlignment="Top" Height="26" Width="69" />
+            <Button x:Name="btnLogin" Content="{DynamicResource btnLogin}" HorizontalAlignment="Center" Margin="0,211,0,0" VerticalAlignment="Top" Height="40" Width="160" Background="#808080" Foreground="White" Click="btnLogin_Click"/>
+            <PasswordBox x:Name="txtContrasena" Margin="20,154,20,0" VerticalAlignment="Top" Password="" KeyDown="txtContrasena_KeyDown" />
+            <TextBox x:Name="txtUsuario" Margin="20,102,20,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="txtUsuario_KeyDown" />
+            <Label x:Name="lblEstadoLogin" Content="" HorizontalAlignment="Center" Margin="0,177,0,0" VerticalAlignment="Top" Height="25" Width="366"/>
+
+        </Grid>
+        <ComboBox x:Name="cbNationalities" Background="Transparent" VerticalAlignment="Top" Height="38" Margin="588,14,34,0" SelectionChanged="cbNationalities_SelectionChanged">
+            <ComboBoxItem x:Name="optSpanish" IsSelected="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="fotos/555635.png" Width="32" Height="32"></Image>
+                    <TextBlock Text="ES" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="5,0,0,0"></TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem x:Name="optEnglish">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="fotos/555417.png" Width="32" Height="32"></Image>
+                    <TextBlock Text="EN" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="5,0,0,0"></TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+        </ComboBox>
+
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="fotos/fondo.jpg" Opacity="0.7"/>
+        </Grid.Background>
+    </Grid>
+
+
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="RutasSenderismo.ExitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RutasSenderismo"
+        mc:Ignorable="d"
+        x:Name="wndExitWindow"
+        WindowStyle="None"
+        Title="ExitWindow" Height="450" Width="669" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="wndExitWindow_MouseLeftButtonDown">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Fotos/montana.png"></ImageBrush>
+    </Window.Background>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15"
+Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Canvas>
+        <TextBlock Canvas.Left="193" Canvas.Top="203" Text="¿ESTA SEGURO QUE QUIERE SALIR?" Foreground="White" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" Width="304" TextAlignment="Center" Height="98" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Canvas.Left="408" Canvas.Top="301" x:Name="btnSalir" Content="Salir" Click="btnSalir_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="142"/>
+        <Button Canvas.Left="117" Canvas.Top="302" x:Name="btnCancelarSalir" Content="Cancelar" Click="btnCancelarSalir_Click" Height="60" Width="142" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    </Canvas>
+</Window>

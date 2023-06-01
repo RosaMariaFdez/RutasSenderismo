@@ -1,0 +1,6 @@
+﻿<Rutas>
+	<Ruta Nombre="Sendero del Bosque" Informacion="Una ruta que atraviesa un hermoso bosque con vistas panorámicas." Dificultad="Fácil" DuracionHoras="4" DistanciaKm="12" Imagen="Fotos/lorien.jpg"/>
+	<Ruta Nombre="Ciudad Real" Informacion="Más que ciudad es un pueblo grande y tranquilo lleno de estudiantes, y de real no sé. Ojalá tener la muralla" Dificultad="Fácil" DuracionHoras="2" DistanciaKm="3" Imagen="Fotos/ciudadreal.jpg"/>
+	<Ruta Nombre="Villa Rubia" Informacion="Cuentan las leyendas que si entras feliz y sales triste" Dificultad="Difícil" DuracionHoras="1" DistanciaKm="1" Imagen="Fotos/villarrubia.jpg"/>
+	<Ruta Nombre="Puertollano" Informacion="La gente de allí presumen de lo peligroso que es. Tienen una fuente con agua agria, no la bebas, puedes dejarla en una botella durante una semana y ves cómo se oxida." Dificultad="Medio" DuracionHoras="3" DistanciaKm="10" Imagen="Fotos/puertollano.jpg"/>
+</Rutas>

@@ -1,0 +1,377 @@
+﻿<Window x:Class="RutasSenderismo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RutasSenderismo"
+        mc:Ignorable="d"
+        Title="Senderify app" Height="850.4" Width="1502.4" WindowState="Maximized" ResizeMode="NoResize" Icon="/stacklands explorer card.png">
+    <Grid Margin="0,0,4,-19.2" Background="#FFFEFFD3" RenderTransformOrigin="0.407,0.441">
+
+        <Border Margin="5,5,0,0" BorderThickness="1">
+
+            <Button x:Name="Logout" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="90" Width="190"
+                            Click="Button_Click_3" ToolTip="Cerrar sesión" Margin="957,9,0,0" Background="#FFFFB7B7">
+
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Fotos/salir.png" Margin="0,5,5,5" Height="59"/>
+                    <TextBlock Text="LOGOUT" FontSize="27
+                               " FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+        </Border>
+        
+        <TabControl x:Name="tab" HorizontalAlignment="Left" Height="598" Margin="10,142,0,0" VerticalAlignment="Top" Width="1144" Background="White" BorderBrush="#FF17FF1D" >
+            <TabItem Header="Usuario" Background="#FFE6FFD8" FontSize="22" Height="33" VerticalAlignment="Top">
+
+                <GroupBox Grid.Column="1" FontSize="24" Header="Datos Usuario"
+                              VerticalAlignment="Top"  Margin="5,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="359*"/>
+                            <ColumnDefinition Width="358*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+
+                            <Label x:Name="lblNombreU" Content="Nombre:" FontWeight="Bold" />
+                            <TextBox x:Name="txtNombreU" Text="Valeria"/>
+
+                            <Label x:Name="lblApellidosU" Content="Apellidos:" FontWeight="Bold"/>
+                            <TextBox x:Name="txtApellidosU" Text="Fernández Familiar"  />
+
+                            <Label x:Name="lblEmalU" Content="email:" FontWeight="Bold"/>
+                            <TextBox x:Name="txtemail" Text="senderistafeliz@gmail.com"  />
+
+
+                            <Separator/>
+                            <Border Margin="5,5,0,0" HorizontalAlignment="Left" 
+                                    BorderBrush="Black" BorderThickness="1">
+
+                                <StackPanel Grid.Column="2" Height="254" Width="291" >
+                                    <Grid Grid.Column="2">
+                                        <Image x:Name="imgUsuario" Width="380" Stretch="Fill"
+                                           HorizontalAlignment="Center"  Source="/Fotos/chica.jpg" RenderTransformOrigin="0.509,0.521" Margin="0,0,0,-106"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+            </TabItem>
+
+            <TabItem Header="Rutas" FontSize="22" Background="#FFE6FFD8">
+                <Grid  RenderTransformOrigin="0.315,0.564" Height="569" Background="#FFE6FFD8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="405*"/>
+                        <ColumnDefinition Width="733*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lstRutas" DisplayMemberPath="Nombre" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="37,0,10,68"
+                             SelectedItem="0" SelectedIndex="0" SelectionChanged="lstRutas_SelectionChanged"/>
+
+                    <Button x:Name="btnAnadirRuta" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="40" Width="160"
+                            Click="btnAnadirRuta_Click" ToolTip="Pulse para añadir una ruta" Margin="37,501,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/anadir.png"  Margin="0,5,5,5"/>
+                            <TextBlock Text="Añadir" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button x:Name="btnEliminarRuta" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" Margin="235,501,0,0" Height="40" Width="160"
+                            Click="btnEliminarRuta_Click" ToolTip="Eliminar la ruta seleccionada en la lista">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/delete.png"  Margin="0,5,5,5"/>
+
+                            <TextBlock Text="Eliminar" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+
+                    </Button>
+
+                    <GroupBox Grid.Column="1" FontSize="24" Header="Información Ruta"
+                              VerticalAlignment="Top" Grid.RowSpan="2"
+                              Margin="5,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="233*"/>
+                                <RowDefinition Height="284*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="359*"/>
+                                <ColumnDefinition Width="358*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Grid.RowSpan="2">
+
+                                <Label Content="Nombre:"/>
+                                <TextBox x:Name="txtNombre"
+                                     Text="{Binding ElementName=lstRutas, Path=SelectedItem.Nombre}"/>
+
+                                <Label Content="Dificultad:"/>
+                                <TextBox x:Name="txtDificultad" 
+                                     Text="{Binding ElementName=lstRutas, Path=SelectedItem.Dificultad}"  />
+                                <Border Margin="5,5,0,0" HorizontalAlignment="Left" 
+                                    BorderBrush="Black" BorderThickness="1">
+                                    <Grid>
+                                        <Image x:Name="imgMapa" Height="300" Width="350" Stretch="Fill"
+                                           HorizontalAlignment="Left" Source="{Binding ElementName=lstRutas, Path=SelectedItem.Imagen}"/>
+
+                                    </Grid>
+                                </Border>
+
+                                <Separator/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="10,0,0,0" >
+                                <Label Content="Duración:"/>
+                                <TextBox x:Name="txtDuracion" 
+                                     Text="{Binding ElementName=lstRutas, Path=SelectedItem.DuracionHoras}"  />
+                                <Label Content="Distancia:"/>
+                                <TextBox x:Name="txtDistancia" 
+                                     Text="{Binding ElementName=lstRutas, Path=SelectedItem.DistanciaKm}"  />
+
+                            </StackPanel>
+                            <StackPanel Grid.Column=" 1" Grid.Row="1">
+                                <TextBlock x:Name="txtInformacion"
+                                Text="{Binding SelectedItem.Informacion, ElementName=lstRutas}" TextWrapping="Wrap" Height="172" Width="330" FontSize="20" FontFamily="Calibri"/>
+                            </StackPanel>
+
+                        </Grid>
+
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Guias" FontSize="22" Background="#FFE6FFD8">
+                <Grid x:Name="gbDatosGuia" Background="#FFE6FFD8" RenderTransformOrigin="0.509,0.344" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="151*"/>
+                        <ColumnDefinition Width="287.6"/>
+                        <ColumnDefinition Width="388.4"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="imgGuia" Height="195" Margin="0,128,56,0" VerticalAlignment="Top" Grid.Column="2"
+                           Source="{Binding ElementName=lstGuias, Path=SelectedItem.Imagen}" HorizontalAlignment="Right" Width="193"/>
+
+                    <GroupBox Grid.Column="1" FontSize="24" Header="Información del guia" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="66*"/>
+                                <ColumnDefinition Width="81*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel >
+
+                                <Label Content="Nombre" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Column="1" Height="39"/>
+                                <Label Content="Apellidos" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" Height="39" />
+                                <Label Content="Idiomas" HorizontalAlignment="Right"  Grid.Column="1" Height="39"/>
+                                <Label Content="Restriciones" HorizontalAlignment="Right" Grid.Column="1" />
+                                <Label Content="Telefono" HorizontalAlignment="Right"  VerticalAlignment="Top"  Grid.Column="1" Height="39" />
+                                <Label Content="Email" HorizontalAlignment="Right"  VerticalAlignment="Top" Grid.Column="1" Height="39"/>
+                                <Label Content="Rutas realizadas" HorizontalAlignment="Right"   Grid.Column="1"/>
+                                <Label Content="R. por realizar" HorizontalAlignment="Right"  Grid.Column="1" Height="39"/>
+                                <Label Content="Puntuacion" HorizontalAlignment="Right"  VerticalAlignment="Top"  Grid.Column="1" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" >
+                                <TextBox x:Name="txtNombre2" Grid.Column="1" HorizontalAlignment="Left"  TextWrapping="Wrap" Width="257"  Grid.ColumnSpan="2" Height="32" VerticalAlignment="Top" Margin="0,5,0,8"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.NombreGuia}"/>
+                                <TextBox x:Name="txtApellidos" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257"  Grid.ColumnSpan="2" Margin="0,0,0,7"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.Apellidos}"/>
+                                <TextBox x:Name="txtIdiomas" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="257"  Grid.ColumnSpan="2"  Margin="0,0,0,7"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.Idiomas}"/>
+                                <TextBox x:Name="txtRestriciones" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Grid.ColumnSpan="2" Margin="0,0,0,7"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.Restricciones}"/>
+                                <TextBox x:Name="txtTelefono2" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257"  Grid.ColumnSpan="2"  Margin="0,0,0,5"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.Telefono}"/>
+                                <TextBox x:Name="txtEmail" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257"  Grid.ColumnSpan="2"  Margin="0,0,0,5"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.Email}"/>
+                                <TextBox x:Name="txtRutasR" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Grid.ColumnSpan="2" Margin="0,0,0,5"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.RutasRealizadas}"/>
+                                <TextBox x:Name="txtRutaspR" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Grid.ColumnSpan="2"  Margin="0,0,0,10"
+                             Text="{Binding ElementName=lstGuias, Path=SelectedItem.RutasPorRealizar}"/>
+                                <Slider x:Name="sldGuias" Minimum="0" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="198" Height="32" Grid.ColumnSpan="2"/>
+                                <Label Content="0   '   '   '   '    5   '   '   '   '   10" HorizontalAlignment="Left" Margin="195,454,0,0" VerticalAlignment="Top" Width="257" Height="38" FontSize="15" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+
+                    <Button x:Name="btnAltaGuias" Grid.Column="3" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="61" Width="176"
+                            Click="btnAltaGuias_Click" ToolTip="Pulse para añadir una ruta" Margin="13,484,0,0">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Fotos/anadir.png"  Margin="0,5,5,5"/>
+                            <TextBlock Text="Añadir" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <ListBox x:Name="lstGuias" DisplayMemberPath="NombreGuia" Grid.Column="3" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="13,38,22,82" SelectionChanged="lstGuias_SelectionChanged"/>
+
+
+                    <Button x:Name="btnDarDeBaja" HorizontalAlignment="Left" Grid.Column="3" 
+                            VerticalAlignment="Top" Margin="194,483,0,0" Height="62" Width="172"
+                            Click="btnDarDeBaja_Click" ToolTip="Eliminar la ruta seleccionada en la lista">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/delete.png"  Margin="0,5,5,5"/>
+
+                            <TextBlock Text="Eliminar" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+
+                    </Button>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Excursiones" FontSize="22" Background="#FFE6FFD8">
+                <Grid x:Name="btnAtras" Background="#FFE6FFD8" Margin="0,0,1,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*"/>
+                        <ColumnDefinition Width="1052*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="76,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Grid.ColumnSpan="2"><Run Text="Rutas "/><Run Language="es-es" Text="disponibles:"/></TextBlock>
+                    <ComboBox x:Name="CmbExcursiones" DisplayMemberPath="Nombre" HorizontalAlignment="Left" Margin="76,86,0,0" VerticalAlignment="Top" Width="248" SelectionChanged="CmbExcursiones_SelectionChanged" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="LstExcursiones" Margin="344,86,436,208" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1"/>
+                    <ListBox x:Name="LstExcGuias" DisplayMemberPath="NombreGuia " Margin="657,86,129,208" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="344,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Grid.Column="1"><Run Text="Rutas "/><Run Language="es-es" Text="seleccionadas"/><Run Text=":"/></TextBlock>
+
+
+                    <Button x:Name="btnExcursionesDelete" 
+                            VerticalAlignment="Top" Margin="403,370,489,0" Height="40" Width="160"
+                            Click="btnEliminarRutaExcursiones_Click" ToolTip="Eliminar la ruta seleccionada en la lista" Grid.Column="1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/delete.png"  Margin="0,5,5,5"/>
+
+                            <TextBlock Text="Eliminar" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+
+                    </Button>
+
+
+                    <Button x:Name="btnCrearExcursion" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="40" Width="160"
+                            Click="Button_Click_2" ToolTip="Pulse para crear esta excursión" Margin="715,370,0,0" Grid.Column="1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/anadir.png"  Margin="0,5,5,5"/>
+                            <TextBlock Text="Añadir" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button x:Name="btnAtras1" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="40" Width="160"
+                            Click="Button_Click_1" ToolTip="Vaciar datos de la excursión actual" Margin="715,480,0,0" Grid.Column="1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/cancelar.png"  Margin="0,5,5,5"/>
+                            <TextBlock Text="Cancelar" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Label x:Name="lblExcursiones" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="48,467,0,0" VerticalAlignment="Top" Height="67" Width="781" Visibility="Hidden" />
+                    <TextBlock HorizontalAlignment="Left" Margin="657,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Grid.Column="1"><Run Text="Guia para la excurs"/><Run Language="es-es" Text="ió"/><Run Text="n"/><Run Text=":"/></TextBlock>
+                    <Label Content="Nombre:" HorizontalAlignment="Left" Margin="76,154,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtNombreExc" HorizontalAlignment="Left" Margin="80,217,0,0" TextWrapping="Wrap" Text="Nueva Excursión" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Reservar" FontSize="22" Height="35"  VerticalAlignment="Top" Background="#FFE6FFD8">
+
+                <Grid Background="#FFE6FFD8" Margin="0,0,1,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="545*"/>
+                        <ColumnDefinition Width="592*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lstExc" DisplayMemberPath="NombreExc" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,48,21,136" SelectionChanged="lstExc_SelectionChanged"/>
+                    <GroupBox Grid.ColumnSpan="2" Header="Datos de la excursión" Grid.Column="2">
+                        <StackPanel>
+                            <Label Content="Nombre de la excursión:" FontWeight="Bold"/>
+                            <Label x:Name="lblNombreE" Content="{Binding ElementName=LstExcursiones, Path=SelectedItem.NombreExc}"/>
+                            <Label Content="Rutas que incluye:" FontWeight="Bold"/>
+                            <Label x:Name="lblRutasE" Content="{Binding ElementName=LstExcursiones, Path=SelectedItem.rutasSeleccionadas.nombre}"/>
+                            <Label Content="Guia que la imparte:" FontWeight="Bold"/>
+                            <Label x:Name="lblGuiaE" Content="{Binding ElementName=LstExcursiones, Path=SelectedItem.guiaSeleccionado}"/>
+                            <Label x:Name="lblReserva" Content="" HorizontalAlignment="Left" Margin="48,468,0,0" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button x:Name="btnReservar" HorizontalAlignment="Left" 
+                            VerticalAlignment="Top"  Height="40" Width="160"
+                            Click="btnReservar_Click" ToolTip="Pulsa para inscribirte en esta excursión" Margin="170,480,0,0" Grid.Column="1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Fotos/reservar.png" Margin="0,5,5,5"/>
+                            <TextBlock Text="Reservar" FontSize="28" FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+        <TextBlock x:Name="NombreEmpresa" HorizontalAlignment="Left" Margin="179,43,0,0" TextWrapping="Wrap" Text="Senderify" VerticalAlignment="Top" Height="85" Width="387" Foreground="#FF51B64A" FontFamily="Cooper Black" FontSize="60" FontStretch="SemiCondensed" FontWeight="Light"/>
+        <Image x:Name="icono" HorizontalAlignment="Left" Height="118" Margin="57,10,0,0" VerticalAlignment="Top" Width="112" Source="stacklands explorer card.png" RenderTransformOrigin="0.719,0.751">
+            <Image.BindingGroup>
+                <BindingGroup/>
+            </Image.BindingGroup>
+        </Image>
+
+    </Grid>
+    
+</Window>
+
+
